@@ -7,7 +7,7 @@ interface Iprops {
   children: React.ReactNode;
 }
 
-export const Shoes = (props): Iprops => {
+export const Shoes = (props) => {
   function filterDesc(desc) {
     if (desc.length < 27) {
       return desc;

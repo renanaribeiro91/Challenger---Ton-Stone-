@@ -78,15 +78,15 @@ export const Home = () => {
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <Shoes
             img={require("../../../assets/1.png")}
-            cost="R$140,90"
-            onClick={() => navigation.navigate("Products")}
+            cost={homePagePayload.sessionProducts.um.cost}
+            onClick={() => navigation.navigate("Detail")}
           >
             {homePagePayload.sessionProducts.um.name}
           </Shoes>
           <Shoes
             img={require("../../../assets/2.png")}
-            cost="R$280,90"
-            onClick={() => navigation.navigate("Products")}
+            cost={homePagePayload.sessionProducts.dois.cost}
+            onClick={() => navigation.navigate("Detail")}
           >
             {homePagePayload.sessionProducts.dois.name}
           </Shoes>
@@ -95,15 +95,15 @@ export const Home = () => {
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <Shoes
             img={require("../../../assets/3.png")}
-            cost="R$560,90"
-            onClick={() => navigation.navigate("Products")}
+            cost={homePagePayload.sessionProducts.tres.cost}
+            onClick={() => navigation.navigate("Detail")}
           >
             {homePagePayload.sessionProducts.tres.name}
           </Shoes>
           <Shoes
             img={require("../../../assets/5.png")}
-            cost="R$220"
-            onClick={() => navigation.navigate("Products")}
+            cost={homePagePayload.sessionProducts.quatro.cost}
+            onClick={() => navigation.navigate("Detail")}
           >
             {homePagePayload.sessionProducts.quatro.name}
           </Shoes>
