@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { Home, Products } from "./list";
+import { Home, Products, Detail } from "./list";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +20,17 @@ export const Routes = () => {
               fontFamily: "Anton_400Regular",
             },
 
+            headerRight: () => (
+              <TouchableOpacity style={{ marginRight: 15 }}>
+                <Feather name="shopping-cart" size={24} color="black" />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="Detail"
+          component={Detail}
+          options={{
             headerRight: () => (
               <TouchableOpacity style={{ marginRight: 15 }}>
                 <Feather name="shopping-cart" size={24} color="black" />
