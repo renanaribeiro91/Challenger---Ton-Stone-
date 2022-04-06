@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 
-import { Shoes } from "../../Components";
+import { Shoes } from "../Shoes";
 
 export const Footer = () => {
   return (

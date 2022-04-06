@@ -10,9 +10,9 @@ import {
 import { Dot, SizeButton, Button, Footer } from "../../Components";
 
 export const Detail = ({ navigation }) => {
-  navigation.setOptions({
-    headerTitle: "Nike Downshifter 10",
-  });
+  //   navigation.setOptions({
+  //     headerTitle: "Nike Downshifter 10",
+  //   });
 
   return (
     <ScrollView style={styles.container}>

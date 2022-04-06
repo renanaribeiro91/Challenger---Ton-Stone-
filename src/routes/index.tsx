@@ -21,7 +21,10 @@ export const Routes = () => {
             },
 
             headerRight: () => (
-              <TouchableOpacity style={{ marginRight: 15 }}>
+              <TouchableOpacity
+                style={{ marginRight: 15 }}
+                onPress={() => alert("clicou")}
+              >
                 <Feather name="shopping-cart" size={24} color="black" />
               </TouchableOpacity>
             ),
@@ -32,7 +35,10 @@ export const Routes = () => {
           component={Detail}
           options={{
             headerRight: () => (
-              <TouchableOpacity style={{ marginRight: 15 }}>
+              <TouchableOpacity
+                style={{ marginRight: 15 }}
+                onPress={() => addItem(item)}
+              >
                 <Feather name="shopping-cart" size={24} color="black" />
               </TouchableOpacity>
             ),
