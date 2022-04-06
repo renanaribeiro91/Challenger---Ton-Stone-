@@ -1,7 +1,13 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 
-export const Shoes = (props) => {
+interface Iprops {
+  img: string;
+  cost: string;
+  children: React.ReactNode;
+}
+
+export const Shoes = (props): Iprops => {
   function filterDesc(desc) {
     if (desc.length < 27) {
       return desc;

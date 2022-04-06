@@ -7,7 +7,41 @@ import { useNavigation } from "@react-navigation/native";
 import { Shoes } from "../../Components";
 
 const homePagePayload = {
-  imgHeader: require("../../../assets/banner.png"),
+  sessionHeader: {
+    img: require("../../../assets/banner.png"),
+  },
+  sessionTypeProduct: {
+    name: "TÊNIS",
+  },
+  sessionGender: {
+    name: "MASCULINO",
+  },
+  sessionNews: {
+    name: "LANÇAMENTOS",
+  },
+
+  sessionProducts: {
+    um: {
+      name: " Nike Air Max Dia",
+      cost: "R$140,90",
+      img: require("../../../assets/1.png"),
+    },
+    dois: {
+      name: " Nike Downshifter 10",
+      cost: "R$280,90",
+      img: require("../../../assets/2.png"),
+    },
+    tres: {
+      name: "Nike Squidward Tentacles",
+      cost: "R$560,90",
+      img: require("../../../assets/3.png"),
+    },
+    quatro: {
+      name: "Nike Epic React Flyknit 2",
+      cost: require("../../../assets/5.png"),
+      img: "",
+    },
+  },
 };
 
 export const Home = () => {
@@ -15,12 +49,19 @@ export const Home = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={homePagePayload.imgHeader} style={styles.image} />
+        <Image
+          source={homePagePayload.sessionHeader.img}
+          style={styles.image}
+        />
 
         <View style={styles.textContainer}>
-          <Text style={styles.text}>TÊNIS</Text>
+          <Text style={styles.text}>
+            {homePagePayload.sessionTypeProduct.name}
+          </Text>
           <Text style={[styles.text, { color: "#CECECF" }]}>•</Text>
-          <Text style={[styles.text, { color: "#CECECF" }]}>MASCULINO</Text>
+          <Text style={[styles.text, { color: "#CECECF" }]}>
+            {homePagePayload.sessionGender.name}
+          </Text>
           <TouchableOpacity
             style={{ position: "absolute", right: 0, alignSelf: "center" }}
           >
@@ -32,7 +73,7 @@ export const Home = () => {
       <View style={styles.line} />
 
       <ScrollView>
-        <Text style={styles.text}>LANÇAMENTOS</Text>
+        <Text style={styles.text}>{homePagePayload.sessionNews.name}</Text>
 
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <Shoes
@@ -40,14 +81,14 @@ export const Home = () => {
             cost="R$140,90"
             onClick={() => navigation.navigate("Products")}
           >
-            Nike Air Max Dia
+            {homePagePayload.sessionProducts.um.name}
           </Shoes>
           <Shoes
             img={require("../../../assets/2.png")}
             cost="R$280,90"
             onClick={() => navigation.navigate("Products")}
           >
-            Nike Downshifter 10
+            {homePagePayload.sessionProducts.dois.name}
           </Shoes>
         </View>
 
@@ -57,14 +98,14 @@ export const Home = () => {
             cost="R$560,90"
             onClick={() => navigation.navigate("Products")}
           >
-            Nike Squidward Tentacles
+            {homePagePayload.sessionProducts.tres.name}
           </Shoes>
           <Shoes
             img={require("../../../assets/5.png")}
             cost="R$220"
             onClick={() => navigation.navigate("Products")}
           >
-            Nike Epic React Flyknit 2
+            {homePagePayload.sessionProducts.quatro.name}
           </Shoes>
         </View>
       </ScrollView>
