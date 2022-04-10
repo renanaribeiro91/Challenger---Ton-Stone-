@@ -4,7 +4,8 @@ import { Dot } from "./Dot";
 import { Footer } from "./Footer";
 import { SizeButton } from "./SizeButton";
 import { Badges } from "./Badges";
-import { Login } from "./Login";
-import { Title } from "Title";
+import { Title } from "./Title";
+import { Form } from "./Form";
+import { BagIcon } from "./BagIcon";
 
-export { Shoes, Button, Dot, Footer, SizeButton, Title };
+export { Shoes, Button, Dot, Footer, SizeButton, Title, Badges, Form, BagIcon };

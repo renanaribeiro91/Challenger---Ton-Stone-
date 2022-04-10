@@ -1,5 +1,6 @@
-import { Login } from "../pages/Login";
+import { Login } from "../pages/login";
 import { Products } from "../pages/products";
-import { Detail } from "../pages/detail";
+import { Details } from "../pages/detail";
+import { Bag } from "../pages/bag";
 
-export { Products, Login, Detail };
+export { Products, Login, Details, Bag };
