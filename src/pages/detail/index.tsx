@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,23 +8,23 @@ import {
   StyleSheet,
 } from "react-native";
 import { Dot, SizeButton, Button, Footer } from "../../Components";
-import { getProductById, ProducutsPagePayloads } from "../../services/mocks";
+import { getProductById } from "../../services/mocks";
+import { BagContext } from "../../Context/Bag";
 import styles from "./styles";
 
 export const Details = ({ route }) => {
-  // const { productId } = route.params;
-  // const [product, setProduct] = useState({});
-
-  // const { addItemToCart } = useContext(CartContext);
-
-  // useEffect(() => {
-  //   setProduct(getProduct(productId));
-  // });
-
-  // function onAddToCart() {
-  //   addItemToCart(ProducutsPagePayloads.products.name);
-  // }
   const item = getProductById(route.params.id);
+  const [product, setProduct] = useState({});
+
+  const { addItemToBag } = useContext(BagContext);
+
+  useEffect(() => {
+    setProduct(item);
+  });
+
+  function onAddToBag() {
+    addItemToBag(product.id);
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -39,7 +39,7 @@ export const Details = ({ route }) => {
           <Text style={[styles.title, { fontSize: 24 }]}>{item.price}</Text>
         </View>
         <View opacity={0.4}>
-          <Text style={[styles.title, { fontSize: 30 }]}>Nike Air Max Dia</Text>
+          <Text style={[styles.title, { fontSize: 30 }]}>{item.name}</Text>
         </View>
 
         <View style={styles.dotContainer}>
@@ -49,26 +49,22 @@ export const Details = ({ route }) => {
           <Dot color="#000" />
         </View>
 
+        {/* // verificar o map aqui depois */}
         <View style={{ flexDirection: "row", width: "100%" }}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {item.map((elem, index) => {
-              return (
-                <SizeButton key={index} bgColor="#17181a" color="#FFF">
-                  {elem.size}
-                </SizeButton>
-              );
-            })}
+            <SizeButton bgColor="#17181a" color="#FFF">
+              {item.size}
+            </SizeButton>
           </ScrollView>
         </View>
 
         <View style={styles.textContent}>
-          <Text style={styles.textTitle}>Nike Downshifter 10</Text>
           <Text style={styles.textContent}>{item.description}</Text>
-          <Text style={styles.textList}>{item.category}</Text>
-          <Text style={styles.textList}>{item.material}</Text>
+          <Text style={styles.textContent}>{item.category}</Text>
+          <Text style={styles.textContent}>{item.material}</Text>
         </View>
 
-        <Button textSubmit="ADD TO CART" submit={"onAddToCart"} />
+        <Button textSubmit="ADD TO CART" submit={onAddToBag} />
 
         <View style={styles.line} />
 

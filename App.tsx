@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import { Routes } from "./src/routes";
+import { BagProvider } from "./src/Context/Bag";
 import {
   useFonts,
   Anton_400Regular,
@@ -21,8 +22,10 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="light" backgroundColor="#000" translucent={true} />
-      <Routes />
+      <BagProvider>
+        <StatusBar style="light" backgroundColor="#000" translucent={true} />
+        <Routes />
+      </BagProvider>
     </>
   );
 }

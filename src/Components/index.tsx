@@ -6,6 +6,6 @@ import { SizeButton } from "./SizeButton";
 import { Badges } from "./Badges";
 import { Title } from "./Title";
 import { Form } from "./Form";
-import { BagIcon } from "./BagIcon";
+import { BagIcon } from "./BagIconNavigate";
 
 export { Shoes, Button, Dot, Footer, SizeButton, Title, Badges, Form, BagIcon };

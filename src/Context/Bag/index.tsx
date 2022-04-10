@@ -1,16 +1,16 @@
 import React, { createContext, useState } from "react";
 
-import { getProduct } from "../ProductsService.js";
+import { getProducts, getProductById } from "../../services/mocks";
 
-export const CartContext = createContext();
+export const BagContext = createContext();
 
-export function CartProvider(props) {
+export const BagProvider = (props) => {
   const [items, setItems] = useState([]);
 
-  function addItemToCart(id) {
-    const product = getProduct(id);
+  const addItemToBag = (id) => {
+    const product = getProductById(id);
     setItems((prevItems) => {
-      const item = prevItems.find((item) => item.name == name);
+      const item = prevItems.find((item) => item.id == id);
       if (!item) {
         return [
           ...prevItems,
@@ -31,7 +31,15 @@ export function CartProvider(props) {
         });
       }
     });
-  }
+  };
+
+  const removeItem = (id, qty) => {
+    // if(qty < 1)
+    const ItemBag = [...items];
+    const newItemsBag = ItemBag.filter((item) => item.id !== id);
+
+    setItems(newItemsBag);
+  };
 
   function getItemsCount() {
     return items.reduce((sum, item) => sum + item.qty, 0);
@@ -42,10 +50,17 @@ export function CartProvider(props) {
   }
 
   return (
-    <CartContext.Provider
-      value={{ items, setItems, getItemsCount, addItemToCart, getTotalPrice }}
+    <BagContext.Provider
+      value={{
+        items,
+        setItems,
+        getItemsCount,
+        addItemToBag,
+        getTotalPrice,
+        removeItem,
+      }}
     >
       {props.children}
-    </CartContext.Provider>
+    </BagContext.Provider>
   );
-}
+};

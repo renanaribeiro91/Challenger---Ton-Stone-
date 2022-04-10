@@ -16,46 +16,49 @@ export const ProductsPagePayload = {
     {
       id: 1,
       name: "Nike Air Max Dia",
-      price: "R$140,90",
+      price: 140.9,
       img: require("../../../assets/1.png"),
       description:
         " Esse tênis de corrida é confeccionado em material respirável, cabedal em couro sintético",
       category: "Categoria: Amortecimento",
       material: "Material: Couro",
-      size: ["37", "39", "40", "42"],
+      size: ["37"],
     },
     {
       id: 2,
       name: "Nike Downshifter 10",
-      price: "R$280,90",
+      price: 280.9,
       img: require("../../../assets/2.png"),
       description:
         " O Tênis Nike Masculino Downshifter 10 traz amortecimento e suporte   atualizados",
       category: "Categoria: Style",
       material: "Material: Mesh",
-      size: ["37", "39", "40", "42"],
+      size: ["40"],
     },
     {
       id: 3,
       name: "Nike Squidward Tentacles",
-      price: "R$560,90",
+      price: 560.9,
       img: require("../../../assets/3.png"),
       description: " add descrição",
       category: "Categoria: Amortecimento",
       material: "Material: Vibranium",
-      size: ["37", "39", "40", "42"],
+      size: ["44"],
     },
     {
       id: 4,
       name: "Nike Epic React Flyknit 2",
-      price: "R$460,90",
+      price: 460.9,
       img: require("../../../assets/5.png"),
       description: " add descrição",
       category: "Categoria: Impatco",
       material: "Material: add material",
-      size: ["37", "39", "40", "42"],
+      size: ["42"],
     },
   ],
+};
+export const getProducts = () => {
+  return ProductsPagePayload.products;
 };
 
 export const getProductById = (id) =>

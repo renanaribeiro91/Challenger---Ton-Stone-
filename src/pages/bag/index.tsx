@@ -1,10 +1,81 @@
-import react from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React, { useEffect, useState, useContext } from "react";
+import { View, Text, Button, FlatList, StyleSheet } from "react-native";
+
+import { BagContext } from "../../Context/Bag";
 
 export const Bag = ({ navigation }) => {
+  const { items, getItemsCount, getTotalPrice, removeItem } =
+    useContext(BagContext);
+  console.log(items, getItemsCount, getTotalPrice);
+
+  function Totals() {
+    let [total, setTotal] = useState(0);
+    useEffect(() => {
+      setTotal(getTotalPrice());
+    });
+    return (
+      <View style={styles.BagLineTotal}>
+        <Text style={[styles.lineLeft, styles.lineTotal]}>Total</Text>
+        <Text style={styles.lineRight}>R$ {total.toFixed(2)}</Text>
+      </View>
+    );
+  }
+
+  function renderItem({ item }) {
+    return (
+      <View style={styles.BagLine}>
+        <Text style={styles.lineLeft}>
+          {item.name} x {item.qty}
+        </Text>
+        <Button onPress={() => removeItem(item.id, item.qty)}>aaa</Button>
+        <Text style={styles.lineRight}>R$ {item.totalPrice}</Text>
+      </View>
+    );
+  }
+
   return (
-    <View>
-      <Text>aaaa</Text>
-    </View>
+    <FlatList
+      style={styles.itemsList}
+      contentContainerStyle={styles.itemsListContainer}
+      data={items}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      ListFooterComponent={Totals}
+    />
   );
 };
+
+const styles = StyleSheet.create({
+  BagLine: {
+    flexDirection: "row",
+  },
+  BagLineTotal: {
+    flexDirection: "row",
+    borderTopColor: "#dddddd",
+    borderTopWidth: 1,
+  },
+  lineTotal: {
+    fontWeight: "bold",
+  },
+  lineLeft: {
+    fontSize: 20,
+    lineHeight: 40,
+    color: "#333333",
+  },
+  lineRight: {
+    flex: 1,
+    fontSize: 20,
+    fontWeight: "bold",
+    lineHeight: 40,
+    color: "#333333",
+    textAlign: "right",
+  },
+  itemsList: {
+    backgroundColor: "#eeeeee",
+  },
+  itemsListContainer: {
+    backgroundColor: "#eeeeee",
+    paddingVertical: 8,
+    marginHorizontal: 8,
+  },
+});
