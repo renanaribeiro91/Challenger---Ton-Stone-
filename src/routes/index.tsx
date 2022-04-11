@@ -25,7 +25,7 @@ export const Routes = () => {
           name="Details"
           component={Details}
           options={({ navigation }) => ({
-            title: "Products",
+            title: "Details",
             headerRight: () => <BagIcon navigation={navigation} />,
           })}
         />
@@ -34,7 +34,7 @@ export const Routes = () => {
           name="Bag"
           component={Bag}
           options={{
-            headerShown: false,
+            headerTitle: "Bag",
           }}
         />
       </Stack.Navigator>

@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-import { getProducts, getProductById } from "../../services/mocks";
+import { getProductById } from "../../services/mocks";
 
 export const BagContext = createContext();
 

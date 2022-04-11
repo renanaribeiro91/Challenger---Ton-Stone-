@@ -36,7 +36,7 @@ export const Details = ({ route }) => {
 
       <View>
         <View>
-          <Text style={[styles.title, { fontSize: 24 }]}>{item.price}</Text>
+          <Text style={[styles.title, { fontSize: 24 }]}>R${item.price}</Text>
         </View>
         <View opacity={0.4}>
           <Text style={[styles.title, { fontSize: 30 }]}>{item.name}</Text>
@@ -67,8 +67,6 @@ export const Details = ({ route }) => {
         <Button textSubmit="ADD TO CART" submit={onAddToBag} />
 
         <View style={styles.line} />
-
-        <Footer />
       </View>
     </ScrollView>
   );

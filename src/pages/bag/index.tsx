@@ -1,12 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
-import { View, Text, Button, FlatList, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import { Button } from "../../Components";
+import { Feather } from "@expo/vector-icons";
 
 import { BagContext } from "../../Context/Bag";
 
 export const Bag = ({ navigation }) => {
   const { items, getItemsCount, getTotalPrice, removeItem } =
     useContext(BagContext);
-  console.log(items, getItemsCount, getTotalPrice);
 
   function Totals() {
     let [total, setTotal] = useState(0);
@@ -15,19 +22,26 @@ export const Bag = ({ navigation }) => {
     });
     return (
       <View style={styles.BagLineTotal}>
-        <Text style={[styles.lineLeft, styles.lineTotal]}>Total</Text>
+        <Text style={[styles.lineTotal, { fontSize: 20, lineHeight: 40 }]}>
+          Total
+        </Text>
         <Text style={styles.lineRight}>R$ {total.toFixed(2)}</Text>
       </View>
     );
   }
 
   function renderItem({ item }) {
+    console.log(item);
     return (
       <View style={styles.BagLine}>
+        <TouchableOpacity onPress={() => removeItem(item.id, item.qty)}>
+          <Feather name="trash" size={24} color="black" />
+        </TouchableOpacity>
         <Text style={styles.lineLeft}>
-          {item.name} x {item.qty}
+          {item.product.name} x {item.qty}
         </Text>
-        <Button onPress={() => removeItem(item.id, item.qty)}>aaa</Button>
+        <View style={styles.container}></View>
+
         <Text style={styles.lineRight}>R$ {item.totalPrice}</Text>
       </View>
     );
@@ -48,6 +62,7 @@ export const Bag = ({ navigation }) => {
 const styles = StyleSheet.create({
   BagLine: {
     flexDirection: "row",
+    alignItems: "center",
   },
   BagLineTotal: {
     flexDirection: "row",
@@ -61,6 +76,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 40,
     color: "#333333",
+    marginLeft: 20,
   },
   lineRight: {
     flex: 1,
