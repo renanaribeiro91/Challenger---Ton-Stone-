@@ -49,7 +49,6 @@ export const Details = ({ route }) => {
           <Dot color="#000" />
         </View>
 
-        {/* // verificar o map aqui depois */}
         <View style={{ flexDirection: "row", width: "100%" }}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <SizeButton bgColor="#17181a" color="#FFF">
