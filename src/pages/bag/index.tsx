@@ -37,7 +37,9 @@ export const Bag = ({ navigation }) => {
             Total
           </Text>
 
-          <Text style={styles.lineRight}>Valor: R$ {total.toFixed(2)}</Text>
+          <Text style={styles.lineRight}>
+            Valor: R$ {parseFloat(total).toFixed(2)}
+          </Text>
         </View>
         <Button textSubmit="EFETUAR A COMPRA USANDO TON" />
         <Image
@@ -49,9 +51,10 @@ export const Bag = ({ navigation }) => {
   }
 
   function renderItem({ item }) {
+    
     return (
       <View style={styles.BagLine}>
-        <Image source={item.product.img} style={styles.image} />
+        <Image source={{ uri: item.product.img }} style={styles.image} />
         <TouchableOpacity onPress={() => removeItem(item.id, item.qty)}>
           <Feather name="trash" size={24} color="black" />
         </TouchableOpacity>

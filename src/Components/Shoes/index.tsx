@@ -6,7 +6,7 @@ import { IShoes } from "../../interfaces";
 export const Shoes = ({ ...props }): IShoes => {
   return (
     <TouchableOpacity style={styles.container} onPress={props.onClick}>
-      <Image source={props.img} style={styles.shoesImg} />
+      <Image source={{ uri: props.img }} style={styles.shoesImg} />
       <Text style={styles.shoesText}>{props.children}</Text>
       <View opacity={0.4}>
         <Text style={styles.shoesText}> {props.price} </Text>

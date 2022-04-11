@@ -10,13 +10,13 @@ import { getProductsApi } from "../../services/api";
 
 export const Products = () => {
   const navigation = useNavigation();
-  // const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState(null);
 
-  // useEffect(() => {
-  //   const result = getProductsApi().then((result) => {
-  //     setProducts(result);
-  //   });
-  // }, []);
+  useEffect(() => {
+    const result = getProductsApi().then((result) => {     
+      setProducts(result);
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -53,18 +53,24 @@ export const Products = () => {
             justifyContent: "space-around",
           }}
         >
-          {ProductsPagePayload.products.map((elem, index) => {
-            return (
-              <Shoes
-                key={index}
-                img={elem.img}
-                price={`R$ ${elem.price}`}
-                onClick={() => navigation.navigate("Details", { id: elem.id })}
-              >
-                {elem.name}
-              </Shoes>
-            );
-          })}
+          {products ? (
+            products.map((elem, index) => {
+              return (
+                <Shoes
+                  key={index}
+                  img={elem.img}
+                  price={`R$ ${elem.price}`}
+                  onClick={() =>
+                    navigation.navigate("Details", { id: elem.id })
+                  }
+                >
+                  {elem.name}
+                </Shoes>
+              );
+            })
+          ) : (
+            <Text>Carregando ..</Text>
+          )}
         </View>
       </ScrollView>
     </View>

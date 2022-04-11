@@ -1,14 +1,14 @@
 import React, { createContext, useState } from "react";
 
-import { getProductById } from "../../services/mocks";
+import { getProductByIdApi } from "../../services/api";
 
 export const BagContext = createContext();
 
 export const BagProvider = (props) => {
   const [items, setItems] = useState([]);
 
-  const addItemToBag = (id: number) => {
-    const product = getProductById(id);
+  const addItemToBag = async (id: string) => {
+    const product = await getProductByIdApi(id);
     setItems((prevItems) => {
       const item = prevItems.find((item) => item.id == id);
 
@@ -26,7 +26,8 @@ export const BagProvider = (props) => {
         return prevItems.map((item) => {
           if (item.id == id) {
             item.qty++;
-            item.totalPrice += product.price;
+            item.totalPrice =
+              parseFloat(item.totalPrice) + parseFloat(product.price);
           }
           return item;
         });
@@ -34,7 +35,7 @@ export const BagProvider = (props) => {
     });
   };
 
-  const removeItem = (id, qty: number) => {
+  const removeItem = (id: string, qty: number) => {
     // if(qty < 1)
     const ItemBag = [...items];
     const newItemsBag = ItemBag.filter((item) => item.id !== id);
@@ -47,7 +48,7 @@ export const BagProvider = (props) => {
   }
 
   function getTotalPrice(): number {
-    return items.reduce((sum, item) => sum + item.totalPrice, 0);
+    return items.reduce((sum, item) => sum + parseFloat(item.totalPrice), 0);
   }
 
   return (

@@ -8,19 +8,21 @@ import {
   StyleSheet,
 } from "react-native";
 import { Dot, SizeButton, Button, Footer } from "../../Components";
-import { getProductById } from "../../services/mocks";
+import { getProductByIdApi } from "../../services/api";
 import { BagContext } from "../../Context/Bag";
 import styles from "./styles";
 
 export const Details = ({ route }) => {
-  const item = getProductById(route.params.id);
   const [product, setProduct] = useState({});
 
   const { addItemToBag } = useContext(BagContext);
 
   useEffect(() => {
-    setProduct(item);
-  });
+    const result = getProductByIdApi(route.params.id).then((result) => {
+      setProduct(result);
+      console.log(result);
+    });
+  }, []);
 
   function onAddToBag() {
     addItemToBag(product.id);
@@ -29,17 +31,19 @@ export const Details = ({ route }) => {
   return (
     <ScrollView style={styles.container}>
       <Image
-        source={require("../../../assets/detail.png")}
+        source={{ uri: product.img }}
         style={styles.image}
         resizeMode="cover"
       />
 
       <View>
         <View>
-          <Text style={[styles.title, { fontSize: 24 }]}>R${item.price}</Text>
+          <Text style={[styles.title, { fontSize: 24 }]}>
+            R${product.price}
+          </Text>
         </View>
         <View opacity={0.4}>
-          <Text style={[styles.title, { fontSize: 30 }]}>{item.name}</Text>
+          <Text style={[styles.title, { fontSize: 30 }]}>{product.name}</Text>
         </View>
 
         <View style={styles.dotContainer}>
@@ -52,15 +56,15 @@ export const Details = ({ route }) => {
         <View style={{ flexDirection: "row", width: "100%" }}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <SizeButton bgColor="#17181a" color="#FFF">
-              {item.size}
+              {product.size}
             </SizeButton>
           </ScrollView>
         </View>
 
         <View style={styles.textContent}>
-          <Text style={styles.textContent}>{item.description}</Text>
-          <Text style={styles.textContent}>{item.category}</Text>
-          <Text style={styles.textContent}>{item.material}</Text>
+          <Text style={styles.textContent}>{product.description}</Text>
+          <Text style={styles.textContent}>{product.category}</Text>
+          <Text style={styles.textContent}>{product.material}</Text>
         </View>
 
         <Button textSubmit="ADICIONAR AO CARRINHO" submit={onAddToBag} />
