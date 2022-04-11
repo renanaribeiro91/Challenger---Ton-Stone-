@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TouchableOpacity, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { Products, Bag, Details, Login } from "./list";
+import { Products, Bag, Details } from "./list";
 import { BagIcon } from "../Components";
 
 const Stack = createNativeStackNavigator();

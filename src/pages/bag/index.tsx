@@ -18,11 +18,12 @@ export const Bag = ({ navigation }) => {
   const { items, getItemsCount, getTotalPrice, removeItem } =
     useContext(BagContext);
 
+  let [total, setTotal] = useState(0);
+
   function Totals(item) {
-    let [total, setTotal] = useState(0);
     useEffect(() => {
       setTotal(getTotalPrice());
-    });
+    }, []);
 
     return (
       <>

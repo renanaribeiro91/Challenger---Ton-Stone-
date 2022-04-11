@@ -64,7 +64,7 @@ export const Details = ({ route }) => {
           <Text style={styles.textContent}>{item.material}</Text>
         </View>
 
-        <Button textSubmit="ADD TO CART" submit={onAddToBag} />
+        <Button textSubmit="ADD AO CARRINHO" submit={onAddToBag} />
 
         <View style={styles.line} />
       </View>

@@ -7,7 +7,7 @@ export const BagContext = createContext();
 export const BagProvider = (props) => {
   const [items, setItems] = useState([]);
 
-  const addItemToBag = (id) => {
+  const addItemToBag = (id: number) => {
     const product = getProductById(id);
     setItems((prevItems) => {
       const item = prevItems.find((item) => item.id == id);
@@ -34,7 +34,7 @@ export const BagProvider = (props) => {
     });
   };
 
-  const removeItem = (id, qty) => {
+  const removeItem = (id, qty: number) => {
     // if(qty < 1)
     const ItemBag = [...items];
     const newItemsBag = ItemBag.filter((item) => item.id !== id);
@@ -42,11 +42,11 @@ export const BagProvider = (props) => {
     setItems(newItemsBag);
   };
 
-  function getItemsCount() {
+  function getItemsCount(): number {
     return items.reduce((sum, item) => sum + item.qty, 0);
   }
 
-  function getTotalPrice() {
+  function getTotalPrice(): number {
     return items.reduce((sum, item) => sum + item.totalPrice, 0);
   }
 

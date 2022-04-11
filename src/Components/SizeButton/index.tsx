@@ -1,9 +1,9 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, Text } from "react-native";
 import styles from "./styles";
+import { ISizeButton } from "../../interfaces";
 
-
-export const SizeButton = ({ ...props }) => {
+export const SizeButton = ({ ...props }): ISizeButton => {
   return (
     <View
       style={[styles.container, { backgroundColor: props.bgColor || "#FFF" }]}

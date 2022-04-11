@@ -40,7 +40,8 @@ export const ProductsPagePayload = {
       name: "Nike Squidward Tentacles",
       price: 560.9,
       img: require("../../../assets/3.png"),
-      description: " add descrição",
+      description:
+        " Ajuste aprimorado na ponta e no calcanhar, para maior conforto e durabilidade",
       category: "Categoria: Amortecimento",
       material: "Material: Vibranium",
       size: ["44"],
@@ -50,16 +51,13 @@ export const ProductsPagePayload = {
       name: "Nike Epic React Flyknit 2",
       price: 460.9,
       img: require("../../../assets/5.png"),
-      description: " add descrição",
+      description: "Respirável e macio que auxilia na ventilação interna",
       category: "Categoria: Impatco",
       material: "Material: add material",
       size: ["42"],
     },
   ],
 };
-export const getProducts = () => {
-  return ProductsPagePayload.products;
-};
 
 export const getProductById = (id) =>
-  ProductsPagePayload.products.filter((product) => product.id === id).shift();
+  ProductsPagePayload.products.find((product) => product.id === id);
