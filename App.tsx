@@ -4,12 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import { Routes } from "./src/routes";
 import { BagProvider } from "./src/Context/Bag";
-import {
-  useFonts,
-  Anton_400Regular,
-  Anton_500Medium,
-  Anton_700Bold,
-} from "@expo-google-fonts/anton";
+import { useFonts, Anton_400Regular } from "@expo-google-fonts/anton";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,12 +16,10 @@ export default function App() {
   }
 
   return (
-    <>
-      <BagProvider>
-        <StatusBar style="light" backgroundColor="#000" translucent={true} />
-        <Routes />
-      </BagProvider>
-    </>
+    <BagProvider>
+      <StatusBar style="light" backgroundColor="#000" translucent={true} />
+      <Routes />
+    </BagProvider>
   );
 }
 
