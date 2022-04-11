@@ -53,7 +53,7 @@ export const ProductsPagePayload = {
       img: require("../../../assets/5.png"),
       description: "Respirável e macio que auxilia na ventilação interna",
       category: "Categoria: Impatco",
-      material: "Material: add material",
+      material: "Material: borracha sintética",
       size: ["42"],
     },
   ],

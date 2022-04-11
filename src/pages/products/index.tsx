@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
@@ -6,9 +6,17 @@ import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { Shoes } from "../../Components";
 import { ProductsPagePayload } from "../../services/mocks";
+import { getProductsApi } from "../../services/api";
 
 export const Products = () => {
   const navigation = useNavigation();
+  // const [products, setProducts] = useState(null);
+
+  // useEffect(() => {
+  //   const result = getProductsApi().then((result) => {
+  //     setProducts(result);
+  //   });
+  // }, []);
 
   return (
     <View style={styles.container}>

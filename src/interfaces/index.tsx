@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export interface IButton {
   textSubmit: string;
-  submit: "";
+  submit?: () => void;
 }
 
 export interface IDot {

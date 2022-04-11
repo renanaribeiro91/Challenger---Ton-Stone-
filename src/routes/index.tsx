@@ -17,6 +17,10 @@ export const Routes = () => {
           component={Products}
           options={({ navigation }) => ({
             title: "Products",
+            headerTitleStyle: {
+              fontWeight: "Anton_400Regular",
+              fontSize: 18,
+            },
             headerRight: () => <BagIcon navigation={navigation} />,
           })}
         />
@@ -26,6 +30,10 @@ export const Routes = () => {
           component={Details}
           options={({ navigation }) => ({
             title: "Details",
+            headerTitleStyle: {
+              fontWeight: "Anton_400Regular",
+              fontSize: 18,
+            },
             headerRight: () => <BagIcon navigation={navigation} />,
           })}
         />
@@ -35,6 +43,10 @@ export const Routes = () => {
           component={Bag}
           options={{
             headerTitle: "Your Bag",
+            headerTitleStyle: {
+              fontWeight: "Anton_400Regular",
+              fontSize: 18,
+            },
           }}
         />
       </Stack.Navigator>

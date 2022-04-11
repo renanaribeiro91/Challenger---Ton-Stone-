@@ -4,5 +4,6 @@ export default StyleSheet.create({
   bag: {
     flexDirection: "row",
     alignItems: "center",
+    marginRight: 10,
   },
 });
