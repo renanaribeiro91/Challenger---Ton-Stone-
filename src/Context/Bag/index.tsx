@@ -11,6 +11,7 @@ export const BagProvider = (props) => {
     const product = getProductById(id);
     setItems((prevItems) => {
       const item = prevItems.find((item) => item.id == id);
+
       if (!item) {
         return [
           ...prevItems,

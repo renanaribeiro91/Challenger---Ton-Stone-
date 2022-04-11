@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
-
 import { BagContext } from "../../Context/Bag";
+import styles from "./styles";
 
 export const BagIcon = ({ navigation }) => {
   const { getItemsCount } = useContext(BagContext);
@@ -12,14 +12,9 @@ export const BagIcon = ({ navigation }) => {
         onPress={() => {
           navigation.navigate("Bag");
         }}
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-        }}
+        style={styles.bag}
       >
-        <Text style={{ fontFamily: "Anton_400Regular" }}>
-          Bag ({getItemsCount()})
-        </Text>
+        <Text>Bag ({getItemsCount()})</Text>
         <Feather name="shopping-cart" size={24} color="black" />
       </TouchableOpacity>
     </View>

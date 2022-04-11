@@ -34,7 +34,7 @@ export const Routes = () => {
           name="Bag"
           component={Bag}
           options={{
-            headerTitle: "Bag",
+            headerTitle: "Your Bag",
           }}
         />
       </Stack.Navigator>

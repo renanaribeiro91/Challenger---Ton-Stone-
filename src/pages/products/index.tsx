@@ -50,7 +50,7 @@ export const Products = () => {
               <Shoes
                 key={index}
                 img={elem.img}
-                price={elem.price}
+                price={`R$ ${elem.price}`}
                 onClick={() => navigation.navigate("Details", { id: elem.id })}
               >
                 {elem.name}

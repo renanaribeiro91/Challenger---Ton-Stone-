@@ -2,11 +2,6 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import styles from "./styles";
 
-interface Iprops {
-  img: string;
-  price: string;
-  children: React.ReactNode;
-}
 
 export const Shoes = ({ ...props }) => {
   function filterDesc(desc) {

@@ -5,35 +5,52 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
+  Image,
+  Dimensions,
 } from "react-native";
 import { Button } from "../../Components";
 import { Feather } from "@expo/vector-icons";
 
 import { BagContext } from "../../Context/Bag";
+import styles from "./styles";
 
 export const Bag = ({ navigation }) => {
   const { items, getItemsCount, getTotalPrice, removeItem } =
     useContext(BagContext);
 
-  function Totals() {
+  function Totals(item) {
     let [total, setTotal] = useState(0);
     useEffect(() => {
       setTotal(getTotalPrice());
     });
+
     return (
-      <View style={styles.BagLineTotal}>
-        <Text style={[styles.lineTotal, { fontSize: 20, lineHeight: 40 }]}>
-          Total
-        </Text>
-        <Text style={styles.lineRight}>R$ {total.toFixed(2)}</Text>
-      </View>
+      <>
+        <View style={styles.BagLineTotal}>
+          <Text
+            style={[
+              styles.lineTotal,
+              { fontSize: 20, lineHeight: 40, fontFamily: "Anton_400Regular" },
+            ]}
+          >
+            Total
+          </Text>
+
+          <Text style={styles.lineRight}>Valor: R$ {total.toFixed(2)}</Text>
+        </View>
+        <Button textSubmit="EFETUAR A COMPRA USANDO TON" />
+        <Image
+          source={require("../../../assets/bannerTon.png")}
+          style={styles.image}
+        />
+      </>
     );
   }
 
   function renderItem({ item }) {
-    console.log(item);
     return (
       <View style={styles.BagLine}>
+        <Image source={item.product.img} style={styles.image} />
         <TouchableOpacity onPress={() => removeItem(item.id, item.qty)}>
           <Feather name="trash" size={24} color="black" />
         </TouchableOpacity>
@@ -41,7 +58,6 @@ export const Bag = ({ navigation }) => {
           {item.product.name} x {item.qty}
         </Text>
         <View style={styles.container}></View>
-
         <Text style={styles.lineRight}>R$ {item.totalPrice}</Text>
       </View>
     );
@@ -58,40 +74,3 @@ export const Bag = ({ navigation }) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  BagLine: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  BagLineTotal: {
-    flexDirection: "row",
-    borderTopColor: "#dddddd",
-    borderTopWidth: 1,
-  },
-  lineTotal: {
-    fontWeight: "bold",
-  },
-  lineLeft: {
-    fontSize: 20,
-    lineHeight: 40,
-    color: "#333333",
-    marginLeft: 20,
-  },
-  lineRight: {
-    flex: 1,
-    fontSize: 20,
-    fontWeight: "bold",
-    lineHeight: 40,
-    color: "#333333",
-    textAlign: "right",
-  },
-  itemsList: {
-    backgroundColor: "#eeeeee",
-  },
-  itemsListContainer: {
-    backgroundColor: "#eeeeee",
-    paddingVertical: 8,
-    marginHorizontal: 8,
-  },
-});
